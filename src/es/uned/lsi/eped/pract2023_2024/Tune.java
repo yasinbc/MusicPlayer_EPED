@@ -14,10 +14,12 @@ public class Tune {
 	public int year;
 	public int duration;
 	
+	/*
 	public int minYear;
 	public int maxYear;
 	public int minDuration;
 	public int maxDuration;
+	*/
 	
 	public Tune(Query query){
 		this.query = query;
