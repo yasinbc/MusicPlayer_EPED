@@ -1,7 +1,7 @@
 package es.uned.lsi.eped.pract2023_2024;
 
 /** Representación de los criterios de búsqueda                               */
-public class Query {
+public class Query implements QueryIF{
 	public String title = "";
 	public String author = "";
 	public String gender = "";

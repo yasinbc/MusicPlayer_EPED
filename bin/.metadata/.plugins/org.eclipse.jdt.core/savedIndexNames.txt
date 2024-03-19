@@ -1,0 +1,1 @@
+INDEX VERSION 1.134+D:\UNED - Ingenieria Informatica\Segundo 2C\EPED\PEC1\reproductor\src\.metadata\.plugins\org.eclipse.jdt.core
