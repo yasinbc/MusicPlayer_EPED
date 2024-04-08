@@ -5,19 +5,38 @@ import es.uned.lsi.eped.DataStructures.*;
 /** Representación de una lista de reproducción                               */
 public class PlayList implements PlayListIF{
 	
+	public TuneCollection tuneCollection;
+	private ListIF<Integer> playList;
+	
+	public PlayList() {
+		this.playList = new List<Integer>();
+	}
+	
+	/*
 	private ListIF<Integer> songIds;
 	
 	public PlayList() {
 		this.songIds = new List<Integer>();
 	}
+	*/
 
 	/** Devuelve la lista de identificadores de canciones de la lista de        */
 	/** reproducción                                                            */
 	/** @return  -una lista de enteros con los identificadores de las canciones */
 	/**          contenidas en la lista de reproducción                         */
 	public ListIF<Integer> getPlayList(){
+		//ListIF<Integer> playListID = new List<Integer>();
+		for(int i=0; i<= this.tuneCollection.size(); i++) {
+			playList.insert(i, this.tuneCollection.size()-1);
+		}
+			return playList;
+	}
+	
+	/*
+	public ListIF<Integer> getPlayList(){
 		return this.songIds;
 	}
+	*/
 
 	/** Añade una lista de identificadores de canciones a la lista de           */
 	/** reproducción                                                            */
@@ -29,7 +48,9 @@ public class PlayList implements PlayListIF{
 	/**          al contenido existente en la lista de reproducción             */
 	public void addListOfTunes(ListIF<Integer> lT) {
 		for(int i=1; i<= lT.size(); i++) {
-			songIds.insert(songIds.size()+1, lT.get(i));
+			lT.insert(i, lT.get(i));
+			
+			
 		}
 	}
 
@@ -51,9 +72,12 @@ public class PlayList implements PlayListIF{
 			}
 		}
 	}
-	
+	/** METODO DE PRUEBA, BORRAR AL FINAL */
 	public static void main(String [] args ) {
-		PlayList playlist = new PlayList();
-		playlist.addListOfTunes(playlist.songIds);
+		String pathSongs = args[0];
+//		TuneCollection tuneCollection = new TuneCollection(pathSongs);
+		PlayList playList = new PlayList();
+		
+		System.out.println(playList.getPlayList());
 	}
 }

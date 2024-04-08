@@ -4,12 +4,15 @@ import es.uned.lsi.eped.DataStructures.*;
 
 /** Representación del gestor de listas de reproducción                       */
 public class PlayListManager implements PlayListManagerIF{
-	
-	private ListIF<PlayListIF> playlists;
+		
+	//public TuneCollection repository;
+	private ListIF<PlayListIF> playlist;
+	public String playListID;
 	
 	public PlayListManager() {
-		this.playlists = new List<PlayListIF>();
+		this.playlist = new List<PlayListIF>();
 	}
+	
 
 	/** Comprueba si existe una lista de reproducción dado su identificador     */
 	/** @param   -una cadena de caracteres no vacía con el identificador de la  */
@@ -17,8 +20,8 @@ public class PlayListManager implements PlayListManagerIF{
 	/** @return  -un valor booleano indicando si existe o no una lista de       */
 	/**          reproducción asociada al identificador recibido como parámetro */
 	public boolean contains(String playListID) {
-		for(int i=1; i<=playlists.size(); i++) {
-			if(playlists.get(i).getPlayList().equals(playListID)) {
+		for(int i=1; i<=playlist.size(); i++) {
+			if(playlist.get(i).getPlayList().equals(playListID)) {
 				return true;
 			}
 		}
@@ -33,9 +36,9 @@ public class PlayListManager implements PlayListManagerIF{
 	/** @return  -la lista de reproducción asociada al identificador recibido   */
 	/**          como parámetro                                                 */
 	public PlayListIF getPlayList(String playListID) {
-		for(int i=1; i<=playlists.size(); i++) {
-            if (playlists.get(i).getPlayList().equals(playListID)) {
-				return playlists.get(i);
+		for(int i=1; i<=playlist.size(); i++) {
+            if (playlist.get(i).getPlayList().equals(playListID)) {
+				return playlist.get(i);
 			}
 		}
 		return null;
@@ -48,8 +51,8 @@ public class PlayListManager implements PlayListManagerIF{
 	/**          existentes                                                     */
 	public ListIF<String> getIDs(){
 		ListIF<String> ids = new List<>();
-		for(int i=1; i<=playlists.size(); i++) {
-			ids.insert(ids.size() + 1, playlists.get(i).getPlayListID());
+		for(int i=1; i<=playlist.size(); i++) {
+			ids.insert(i, Integer.toString(i)+", ");
 		}
 		return ids;
 	}
@@ -61,8 +64,9 @@ public class PlayListManager implements PlayListManagerIF{
 	/** @pre     -no existe ninguna lista de reproducción asociada al           */
 	/**          identificador recibido como parámetro                          */
 	public void createPlayList(String playListID) {
+		if(String.)
 		if(!contains(playListID)) {
-			playlists.insert(playlists.size()+1, new PlayList(playListID));
+			playlist.insert(playlist.size()+1, new PlayListIF(playListID));
 		}
 	}
 
@@ -72,11 +76,19 @@ public class PlayListManager implements PlayListManagerIF{
 	/** @pre     -existe una lista de reproducción asociada al identificador    */
 	/**          recibido como parámetro                                        */
 	public void removePlayList(String playListID) {
-		for (int i = 1; i <= playlists.size(); i++) {
-			if (playlists.get(i).getPlayList().equals(playListID)) {
-				playlists.remove(i);
+		for (int i = 1; i <= playlist.size(); i++) {
+			if (playlist.get(i).getPlayList().equals(playListID)) {
+				playlist.remove(i);
 	            break;
 	        }
 		}
+	}
+	
+	/** MÉTODO MAIN DE PRUEBA, BORRAR LUEGO */
+	public static void main(String [] args) {
+		PlayListManager plm = new PlayListManager();
+		
+		
+		plm.getIDs();
 	}
 }

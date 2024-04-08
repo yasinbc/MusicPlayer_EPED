@@ -1,0 +1,5 @@
+Titutlo autor genero album 1990 120
+Titutlo1 autor1 genero1 album1 1991 121
+Titutlo2 autor2 genero2 album2 1992 122
+Titutlo3 autor3 genero3 album3 1993 123
+Titutlo4 autor4 genero4 album4 1994 124

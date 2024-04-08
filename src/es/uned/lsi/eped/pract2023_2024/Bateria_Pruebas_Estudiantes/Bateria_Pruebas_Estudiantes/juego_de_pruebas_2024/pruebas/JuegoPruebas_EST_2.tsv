@@ -1,0 +1,230 @@
+getPlayListContent	Lista
+removePlayList	Lista
+getPlayBackQueue
+getRecentlyPlayed
+createPlayList	List-0
+getPlayListIDs
+getPlayListContent	List-0
+createPlayList	List-1
+getPlayListIDs
+getPlayListContent	List-1
+createPlayList	List-2
+getPlayListIDs
+getPlayListContent	List-2
+createPlayList	List-3
+getPlayListIDs
+getPlayListContent	List-3
+createPlayList	List-4
+getPlayListIDs
+getPlayListContent	List-4
+createPlayList	List-5
+getPlayListIDs
+getPlayListContent	List-5
+createPlayList	List-6
+getPlayListIDs
+getPlayListContent	List-6
+createPlayList	List-7
+getPlayListIDs
+getPlayListContent	List-7
+createPlayList	List-8
+getPlayListIDs
+getPlayListContent	List-8
+createPlayList	List-9
+getPlayListIDs
+getPlayListContent	List-9
+addListOfTunesToPlayList	List-0
+addListOfTunesToPlayBackQueue
+addPlayListToPlayBackQueue	List-0
+removeTuneFromPlayList	List-0	1
+clearPlayBackQueue
+addListOfTunesToPlayList	List-0	6763	9496	915	6657	2797	5523	2417
+getPlayListContent	List-0
+addListOfTunesToPlayList	List-1	6387	1151
+getPlayListContent	List-1
+addListOfTunesToPlayList	List-2	4597	10674	10051	6192	5798
+getPlayListContent	List-2
+addListOfTunesToPlayList	List-3	1437	71	4257	5196
+getPlayListContent	List-3
+addListOfTunesToPlayList	List-4	11085
+getPlayListContent	List-4
+addListOfTunesToPlayList	List-5	27
+getPlayListContent	List-5
+addListOfTunesToPlayList	List-6	1124	7480	4476	4845	10183	1358	2315	11218	6609
+getPlayListContent	List-6
+addListOfTunesToPlayList	List-7	4932	3718	3496	10885	1924	151
+getPlayListContent	List-7
+addListOfTunesToPlayList	List-8	2693	5246	5084
+getPlayListContent	List-8
+addListOfTunesToPlayList	List-9	2752	8483	8796	2957
+getPlayListContent	List-9
+getPlayListContent	List-0
+getPlayListContent	List-1
+getPlayListContent	List-2
+getPlayListContent	List-3
+getPlayListContent	List-4
+getPlayListContent	List-5
+getPlayListContent	List-6
+getPlayListContent	List-7
+getPlayListContent	List-8
+getPlayListContent	List-9
+addListOfTunesToPlayList	List-0	5098	9351
+getPlayListContent	List-0
+addListOfTunesToPlayList	List-1	10192	3466	5778	5977	1806	4065
+getPlayListContent	List-1
+addListOfTunesToPlayList	List-2	790	6198	7633	8343	9372	8706	11291	5884
+getPlayListContent	List-2
+addListOfTunesToPlayList	List-3	10348	9369	8104	3867	775	3999	10978	8721
+getPlayListContent	List-3
+addListOfTunesToPlayList	List-4	2543	2184	4157	7120	10853
+getPlayListContent	List-4
+addListOfTunesToPlayList	List-5	3028	3474	1534	3948	6519	6529
+getPlayListContent	List-5
+addListOfTunesToPlayList	List-6	10040	9831
+getPlayListContent	List-6
+addListOfTunesToPlayList	List-7	10951	3307	685	1134	10063	9768	11150	3359	10776
+getPlayListContent	List-7
+addListOfTunesToPlayList	List-8	8010	9837	10994	102
+getPlayListContent	List-8
+addListOfTunesToPlayList	List-9	4128
+getPlayListContent	List-9
+getPlayListContent	List-0
+getPlayListContent	List-1
+getPlayListContent	List-2
+getPlayListContent	List-3
+getPlayListContent	List-4
+getPlayListContent	List-5
+getPlayListContent	List-6
+getPlayListContent	List-7
+getPlayListContent	List-8
+getPlayListContent	List-9
+getPlayListContent	List-0
+removeTuneFromPlayList	List-0	6763
+removeTuneFromPlayList	List-0	5098
+getPlayListContent	List-0
+getPlayListContent	List-1
+removeTuneFromPlayList	List-1	6387
+removeTuneFromPlayList	List-1	10192
+getPlayListContent	List-1
+getPlayListContent	List-2
+removeTuneFromPlayList	List-2	4597
+removeTuneFromPlayList	List-2	790
+getPlayListContent	List-2
+getPlayListContent	List-3
+removeTuneFromPlayList	List-3	1437
+removeTuneFromPlayList	List-3	10348
+getPlayListContent	List-3
+getPlayListContent	List-4
+removeTuneFromPlayList	List-4	11085
+removeTuneFromPlayList	List-4	2543
+getPlayListContent	List-4
+getPlayListContent	List-5
+removeTuneFromPlayList	List-5	27
+removeTuneFromPlayList	List-5	3028
+getPlayListContent	List-5
+getPlayListContent	List-6
+removeTuneFromPlayList	List-6	1124
+removeTuneFromPlayList	List-6	10040
+getPlayListContent	List-6
+getPlayListContent	List-7
+removeTuneFromPlayList	List-7	4932
+removeTuneFromPlayList	List-7	10951
+getPlayListContent	List-7
+getPlayListContent	List-8
+removeTuneFromPlayList	List-8	2693
+removeTuneFromPlayList	List-8	8010
+getPlayListContent	List-8
+getPlayListContent	List-9
+removeTuneFromPlayList	List-9	2752
+removeTuneFromPlayList	List-9	4128
+getPlayListContent	List-9
+addPlayListToPlayBackQueue	List-3
+addPlayListToPlayBackQueue	List-5
+getPlayBackQueue
+clearPlayBackQueue
+getPlayBackQueue
+addPlayListToPlayBackQueue	List-2
+play
+getRecentlyPlayed
+play
+getRecentlyPlayed
+play
+getRecentlyPlayed
+play
+getRecentlyPlayed
+addListOfTunesToPlayBackQueue		7685	6087	7266	8445	5971	4677	7892
+getPlayBackQueue
+clearPlayBackQueue
+removePlayList	List-0
+getPlayListIDs
+getPlayListContent	List-0
+removePlayList	List-1
+getPlayListIDs
+getPlayListContent	List-1
+removePlayList	List-2
+getPlayListIDs
+getPlayListContent	List-2
+removePlayList	List-3
+getPlayListIDs
+getPlayListContent	List-3
+removePlayList	List-4
+getPlayListIDs
+getPlayListContent	List-4
+removePlayList	List-5
+getPlayListIDs
+getPlayListContent	List-5
+removePlayList	List-6
+getPlayListIDs
+getPlayListContent	List-6
+removePlayList	List-7
+getPlayListIDs
+getPlayListContent	List-7
+removePlayList	List-8
+getPlayListIDs
+getPlayListContent	List-8
+removePlayList	List-9
+getPlayListIDs
+getPlayListContent	List-9
+createPlayList	SearchList
+addSearchToPlayList	SearchList	Sunrise	""	""	""	-1	-1	-1	-1
+getPlayListContent	SearchList
+addSearchToPlayList	SearchList	""	Phil Collins	""	""	-1	-1	-1	-1
+getPlayListContent	SearchList
+addSearchToPlayList	SearchList	""	""	Rap	""	-1	-1	-1	-1
+getPlayListContent	SearchList
+addSearchToPlayList	SearchList	""	""	""	Los Gavilanes	-1	-1	-1	-1
+getPlayListContent	SearchList
+addSearchToPlayList	SearchList	""	""	""	""	2005	2010	-1	-1
+getPlayListContent	SearchList
+addSearchToPlayList	SearchList	""	""	""	""	-1	-1	250	290
+getPlayListContent	SearchList
+addSearchToPlayBackQueue	Boom Boom	""	""	""	-1	-1	-1	-1
+getPlayBackQueue
+addSearchToPlayBackQueue	""	Chopin	""	""	-1	-1	-1	-1
+getPlayBackQueue
+addSearchToPlayBackQueue	""	""	R&B	""	-1	-1	-1	-1
+getPlayBackQueue
+addSearchToPlayBackQueue	""	""	""	Daddy's Little Girls	-1	-1	-1	-1
+getPlayBackQueue
+addSearchToPlayBackQueue	""	""	""	""	1980	1981	-1	-1
+getPlayBackQueue
+addSearchToPlayBackQueue	""	""	""	""	-1	-1	330	380
+getPlayBackQueue
+clearPlayBackQueue
+removePlayList	SearchList
+createPlayList	CombinedSearchList
+addSearchToPlayList	CombinedSearchList	Bembe	Mayito Rivera	Salsa	Negrito Bailador	-1	-1	-1	-1
+getPlayListContent	CombinedSearchList
+addSearchToPlayList	CombinedSearchList	Bembe	Mayito Rivera	Salsa	Negrito Bailador	2005	2005	-1	-1
+getPlayListContent	CombinedSearchList
+addSearchToPlayList	CombinedSearchList	Bembe	Mayito Rivera	Salsa	Negrito Bailador	2005	2005	269	269
+getPlayListContent	CombinedSearchList
+addSearchToPlayList	CombinedSearchList	Bembe	Mayito Rivera	Salsa	Negrito Bailador	2005	2005	100	200
+getPlayListContent	CombinedSearchList
+addSearchToPlayBackQueue	Fools Like Me	Jerry Lee Lewis	Rock	The Best Of Jerry Lee Lewis	-1	-1	-1	-1
+getPlayBackQueue
+addSearchToPlayBackQueue	Fools Like Me	Jerry Lee Lewis	Rock	The Best Of Jerry Lee Lewis	1982	1982	-1	-1
+getPlayBackQueue
+addSearchToPlayBackQueue	Fools Like Me	Jerry Lee Lewis	Rock	The Best Of Jerry Lee Lewis	1982	1982	192	192
+getPlayBackQueue
+addSearchToPlayBackQueue	Fools Like Me	Jerry Lee Lewis	Rock	The Best Of Jerry Lee Lewis	1985	1990	192	192
+getPlayBackQueue
