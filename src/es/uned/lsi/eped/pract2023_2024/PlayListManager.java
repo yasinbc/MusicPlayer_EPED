@@ -1,16 +1,18 @@
 package es.uned.lsi.eped.pract2023_2024;
 
+import es.uned.lsi.eped.DataStructures.ListIF;
 import es.uned.lsi.eped.DataStructures.*;
 
 /** Representación del gestor de listas de reproducción                       */
 public class PlayListManager implements PlayListManagerIF{
 		
 	//public TuneCollection repository;
-	private ListIF<PlayListIF> playlist;
-	public String playListID;
+	private ListIF<String, PlayListIF> playList2;
+	private ListIF<String> playlist;
+	//public String playListID;
 	
 	public PlayListManager() {
-		this.playlist = new List<PlayListIF>();
+		this.playlist = new List<>();
 	}
 	
 
@@ -20,13 +22,17 @@ public class PlayListManager implements PlayListManagerIF{
 	/** @return  -un valor booleano indicando si existe o no una lista de       */
 	/**          reproducción asociada al identificador recibido como parámetro */
 	public boolean contains(String playListID) {
-		for(int i=1; i<=playlist.size(); i++) {
-			if(playlist.get(i).getPlayList().equals(playListID)) {
-				return true;
+		if(!this.playlist.isEmpty()) {
+			while(this.playlist.iterator().hasNext()) {
+				if(this.playlist.equals(playListID)) {
+					return true;
+					//return this.playlist.equals(playListID);
+				}
 			}
 		}
 		return false;
 	}
+	
 
 	/** Devuelve la lista de reproducción asociada a un identificador           */
 	/** @param   -una cadena de caracteres no vacía con el identificador de la  */
@@ -36,6 +42,10 @@ public class PlayListManager implements PlayListManagerIF{
 	/** @return  -la lista de reproducción asociada al identificador recibido   */
 	/**          como parámetro                                                 */
 	public PlayListIF getPlayList(String playListID) {
+		if(!this.playlist.isEmpty()) {
+			this.playlist.
+		}
+		
 		for(int i=1; i<=playlist.size(); i++) {
             if (playlist.get(i).getPlayList().equals(playListID)) {
 				return playlist.get(i);

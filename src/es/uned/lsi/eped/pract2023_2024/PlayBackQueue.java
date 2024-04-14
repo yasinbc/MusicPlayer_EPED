@@ -4,7 +4,7 @@ import es.uned.lsi.eped.DataStructures.ListIF;
 import es.uned.lsi.eped.DataStructures.*;
 
 /** Representación de la cola de reproducción                                 */
-public class PlayBackQueue {
+public class PlayBackQueue implements PlayBackQueueIF{
 	
 	public QueueIF<Integer> cola;
 	public ListIF<Integer> listaReproduccion;
@@ -27,6 +27,7 @@ public class PlayBackQueue {
 		int i=0;
 		while(iteradorCola.hasNext()) {
 			this.listaReproduccion.insert(this.listaReproduccion.get(i), iteradorCola.getNext());
+			i++;
 		}
 		return listaReproduccion;
 	}
@@ -35,11 +36,12 @@ public class PlayBackQueue {
 	/** @return  -devuelve un valor booleano que indica si la cola de           */
 	/**          reproducción está vacía o no                                   */
 	public boolean isEmpty() {
-		if(this.cola.size()==0) {
-			return true;
-		}else if(this.cola.size()>0){
-			return false;
-		}
+		//if(this.cola.size()==0) {
+		
+		boolean isEmpty;
+		
+		isEmpty = (this.cola.size()==0) ? true : false;
+		return isEmpty;
 		
 	}
 
@@ -49,9 +51,11 @@ public class PlayBackQueue {
 	/** @return  -devuelve el identificador de la primera canción en la cola de */
 	/**          reproducción                                                   */
 	public int getFirstTune() {
-		if(!this.cola.isEmpty()) {
-			
+		int firstTuneID = 0;
+		if(!isEmpty()) {
+			firstTuneID = this.cola.getFirst();
 		}
+		return firstTuneID;
 	}
 
 	/** Extrae la primera canción que se encuentre en la cola de reproducción   */
@@ -72,7 +76,15 @@ public class PlayBackQueue {
 	/**          canciones que existen dentro del repositorio                   */
 	/** @pos     -añade todos los identificadores presentes en la lista al      */
 	/**          final de la cola de reproducción                               */
-	public void addTunes(ListIF<Integer> lT);
+	public void addTunes(ListIF<Integer> lT) {
+		if(!lT.isEmpty()) {
+			int i=1;
+			while(lT.iterator().hasNext()) {
+				this.cola.enqueue(lT.get(i));
+				i++;
+			}
+		}
+	}
 
 	/** Vacía el contenido de la cola de reproducción                           */
 	/** @pos     -la cola de reproducción queda vacía, sin identificadores      */

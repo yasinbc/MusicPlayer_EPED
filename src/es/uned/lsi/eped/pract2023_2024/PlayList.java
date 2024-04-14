@@ -1,12 +1,13 @@
 package es.uned.lsi.eped.pract2023_2024;
 
+import es.uned.lsi.eped.DataStructures.ListIF;
 import es.uned.lsi.eped.DataStructures.*;
 
 /** Representación de una lista de reproducción                               */
 public class PlayList implements PlayListIF{
 	
-	public TuneCollection tuneCollection;
-	private ListIF<Integer> playList;
+	//public TuneCollection tuneCollection;
+	public ListIF<Integer> playList;
 	
 	public PlayList() {
 		this.playList = new List<Integer>();
@@ -25,11 +26,12 @@ public class PlayList implements PlayListIF{
 	/** @return  -una lista de enteros con los identificadores de las canciones */
 	/**          contenidas en la lista de reproducción                         */
 	public ListIF<Integer> getPlayList(){
-		//ListIF<Integer> playListID = new List<Integer>();
-		for(int i=0; i<= this.tuneCollection.size(); i++) {
-			playList.insert(i, this.tuneCollection.size()-1);
+		ListIF<Integer> playListID = new List<>();
+		int i=0;
+		while(this.playList.iterator().hasNext()) {
+			playListID.insert(i, this.playList.get(i));
 		}
-			return playList;
+		return playListID;
 	}
 	
 	/*
@@ -47,10 +49,11 @@ public class PlayList implements PlayListIF{
 	/** @pos     -el contenido de la lista recibida como parámetro se concatena */
 	/**          al contenido existente en la lista de reproducción             */
 	public void addListOfTunes(ListIF<Integer> lT) {
-		for(int i=1; i<= lT.size(); i++) {
-			lT.insert(i, lT.get(i));
-			
-			
+		if(!lT.isEmpty()) {
+			int i=0;
+			while(lT.iterator().hasNext()) {
+				this.playList.insert(this.playList.size()+1+i, lT.get(i));
+			}
 		}
 	}
 
@@ -63,12 +66,10 @@ public class PlayList implements PlayListIF{
 	/**          parámetro. El resto de identificadores conserva su orden       */
 	/**          relativo                                                       */
 	public void removeTune(int tuneID){
-		int pos = 1;
-		while(pos<=songIds.size()) {
-			if(songIds.get(pos)==tuneID) {
-				songIds.remove(pos);
-			}else {
-				pos++;
+		int pos = 0;
+		while(this.playList.iterator().hasNext()) {
+			if(this.playList.contains(tuneID)) {
+				this.playList.remove(tuneID);
 			}
 		}
 	}
