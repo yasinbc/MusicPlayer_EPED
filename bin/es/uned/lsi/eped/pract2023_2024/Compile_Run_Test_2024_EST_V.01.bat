@@ -45,7 +45,7 @@ mkdir "%TMP_FOLDER%\src\es\uned\lsi"
 mkdir "%TMP_FOLDER%\src\es\uned\lsi\eped"
 mkdir "%TMP_FOLDER%\src\es\uned\lsi\eped\pract2023_2024"
 xcopy /s/q "%SRC_DIR%\es\uned\lsi\eped\pract2023_2024" "%TMP_FOLDER%\src\es\uned\lsi\eped\pract2023_2024"
-REM xcopy /s/y/q "juego_de_pruebas_2024\lib\src" "%TMP_FOLDER%\src\es\uned\lsi\eped\pract2023_2024"
+xcopy /s/y/q "juego_de_pruebas_2024\lib\src" "%TMP_FOLDER%\src\es\uned\lsi\eped\pract2023_2024"
 
 echo.
 echo.
@@ -92,7 +92,7 @@ pause
 REM =============================
 REM === Run Prueba Estudiantes Basica ===
 REM =============================
-echo Ejecutando el programa con prueba básica
+echo Ejecutando el programa con prueba basica
 REM === DESCOMENTAR LA SIGUIENTE LINEA SI SE QUIERE IMPRIMIR LA ORDEN === 
 REM echo %JAVA_HOME_JDK%"\bin\java" -cp "%TMP_FOLDER%%BIN_DIR%;juego_de_pruebas_2024/lib/TAD_modified.jar" "%MAIN%" "juego_de_pruebas_2024/pruebas/Repository.tsv" "juego_de_pruebas_2024/pruebas/JuegoPruebas_EST_1.tsv" 300  > "juego_de_pruebas_2024/salida/Salida_EST_1.dat"
 
@@ -111,7 +111,7 @@ pause
 
 
 REM === Comprobacion Estudiantes Basica ===
-echo Comprobando bateria de pruebas para prueba básica
+echo Comprobando bateria de pruebas para prueba basica
 REM === DESCOMENTAR LA SIGUIENTE LINEA SI SE QUIERE IMPRIMIR LA ORDEN === 
 REM echo %JAVA_HOME_JDK%"\bin\java" -jar "juego_de_pruebas_2024/lib/Comparator.jar" "juego_de_pruebas_2024/salida/Salida_EST_1.dat" "juego_de_pruebas_2024/salida/Salida_1.dat" "errores_1.txt"
 
