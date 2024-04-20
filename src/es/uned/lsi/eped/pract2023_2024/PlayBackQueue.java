@@ -1,20 +1,27 @@
 package es.uned.lsi.eped.pract2023_2024;
 
-import es.uned.lsi.eped.DataStructures.ListIF;
 import es.uned.lsi.eped.DataStructures.*;
 
 /** Representación de la cola de reproducción                                 */
 public class PlayBackQueue implements PlayBackQueueIF{
 	
-	public QueueIF<Integer> cola;
-	public ListIF<Integer> listaReproduccion;
+	private QueueIF<Integer> colaReproduccion;
+	//public ListIF<Integer> listaReproduccion;
 	
+	public PlayBackQueue() {
+		colaReproduccion = new Queue<>();
+	}
+	
+	/****************************************/
+	/*
 	public PlayBackQueue(QueueIF<Integer> cola) {
 		this.cola = new Queue<>();
 		this.cola = cola;
-		/****************/
+		
 		this.listaReproduccion = new List<>();
 	}
+	*/
+	/****************************************/
 	
 	/** Devuelve una lista con los identificadores de las canciones contenidas  */
 	/** en la cola de reproducción                                              */
@@ -22,6 +29,19 @@ public class PlayBackQueue implements PlayBackQueueIF{
 	/**          que están en la cola de reproducción, conservando el orden en  */
 	/**          el que fueron originalmente introducidos                       */
 	public ListIF<Integer> getContent(){
+		ListIF<Integer> listaAuxiliar = new List<>();
+		QueueIF<Integer> colaReproduccionAux = new Queue<>();
+		colaReproduccionAux.clear();
+		colaReproduccionAux = colaReproduccion;
+		while(!colaReproduccionAux.isEmpty()) {
+			//Guarda el primer elemento de la cola en la lista auxiliar
+			Integer elemento = colaReproduccion.getFirst();
+			listaAuxiliar.insert(listaAuxiliar.size()+1, elemento);
+		}
+		return listaAuxiliar;
+		
+		/****************************************/
+		/*
 		IteratorIF<Integer> iteradorCola;
 		iteradorCola = this.cola.iterator();
 		int i=0;
@@ -30,19 +50,28 @@ public class PlayBackQueue implements PlayBackQueueIF{
 			i++;
 		}
 		return listaReproduccion;
+		*/
+		/****************************************/
 	}
 
 	/** Devuelve un booleano indicando si la cola de reproducción es vacía o no */
 	/** @return  -devuelve un valor booleano que indica si la cola de           */
 	/**          reproducción está vacía o no                                   */
 	public boolean isEmpty() {
-		//if(this.cola.size()==0) {
 		
+		if(colaReproduccion.isEmpty()) {
+			return true;
+		}else {
+			return false;
+		}
+		/****************************************/
+		/*
 		boolean isEmpty;
 		
-		isEmpty = (this.cola.size()==0) ? true : false;
+		isEmpty = (this.colaReproduccion.size()==0) ? true : false;
 		return isEmpty;
-		
+		*/
+		/****************************************/
 	}
 
 	/** Devuelve un entero con el identificador de la primera canción que está  */
@@ -53,7 +82,7 @@ public class PlayBackQueue implements PlayBackQueueIF{
 	public int getFirstTune() {
 		int firstTuneID = 0;
 		if(!isEmpty()) {
-			firstTuneID = this.cola.getFirst();
+			firstTuneID = this.colaReproduccion.getFirst();
 		}
 		return firstTuneID;
 	}
@@ -62,8 +91,8 @@ public class PlayBackQueue implements PlayBackQueueIF{
 	/** @pre     -la cola de reproducción no está vacía                         */
 	/** @pos     -elimina de la cola de reproducción el primer identificador    */
 	public void extractFirstTune() {
-		if(!this.cola.isEmpty()) {
-			this.cola.getFirst();
+		if(!this.colaReproduccion.isEmpty()) {
+			this.colaReproduccion.getFirst();
 		}
 		
 	}
@@ -80,7 +109,7 @@ public class PlayBackQueue implements PlayBackQueueIF{
 		if(!lT.isEmpty()) {
 			int i=1;
 			while(lT.iterator().hasNext()) {
-				this.cola.enqueue(lT.get(i));
+				this.colaReproduccion.enqueue(lT.get(i));
 				i++;
 			}
 		}
@@ -89,8 +118,8 @@ public class PlayBackQueue implements PlayBackQueueIF{
 	/** Vacía el contenido de la cola de reproducción                           */
 	/** @pos     -la cola de reproducción queda vacía, sin identificadores      */
 	public void clear() {
-		if(!this.cola.isEmpty()) {
-			this.cola.clear();
+		if(!this.colaReproduccion.isEmpty()) {
+			this.colaReproduccion.clear();
 		}
 	}
 }

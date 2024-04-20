@@ -11,12 +11,6 @@ public class Tune implements TuneIF{
 	public int year;
 	public int duration;
 	
-	/*
-	public Tune(Query query){
-		this.query = query;
-	}
-	*/
-	
 	public Tune(String title, String author, String gender, String album, int year, int duration) {
 		this.title = title;
 		this.author = author;
@@ -41,7 +35,7 @@ public class Tune implements TuneIF{
 	/** -un entero con la duración en segundos de la canción 					*/
 	/** @pre -t != "" && a != "" && g != "" && al != "" && y > 0 && d > 0 		*/
 	public boolean match(QueryIF q){
-		
+		/*
 		//Criterio de titulo
 		if(!this.title.equals("")) {
 			System.out.println("Contiene título");
@@ -106,6 +100,48 @@ public class Tune implements TuneIF{
 		
 		System.out.println("\nla consulta es cierta en su totalidad\n");
 		return true;
+		*/
+		
+		
+		/** CONDICION LARGA */
+		if(
+			(q.getTitle().isEmpty()  || q.getTitle().equalsIgnoreCase(this.getTitle()) )     &&
+			(q.getAuthor().isEmpty() || q.getAuthor().equalsIgnoreCase(this.getAuthor() )  ) &&
+			(q.getGenre().isEmpty()  || q.getGenre().equalsIgnoreCase(this.getGenre() ) )    &&
+			(q.getAlbum().isEmpty()  || q.getAlbum().equalsIgnoreCase(this.getAlbum() ) )    &&
+			(q.getMin_year()==-1     || q.getMin_year()     >=this.getYear() )               &&
+			(q.getMax_year()==-1     || q.getMax_year()     <=this.getYear() )               &&
+			(q.getMin_duration()==-1 || q.getMin_duration() <=this.getDuration() )           &&
+			(q.getMax_duration()==-1 || q.getMax_duration() >=this.getDuration() ) ){
+				return true;
+		}else{
+			return false;
+		}
+		/** CONDICION LARGA */
+	}
+	
+	public int getDuration() {
+		return duration;
+	}
+	
+	public int getYear(){
+		return year;
+	}
+	
+	public String getAlbum() {
+		return album;
+	}
+	
+	public String getGenre() {
+		return gender;
+	}
+	
+	public String getAuthor() {
+		return author;
+	}
+	
+	public String getTitle() {
+		return title;
 	}
 	
 	

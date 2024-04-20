@@ -1,22 +1,31 @@
 package es.uned.lsi.eped.pract2023_2024;
 
-import es.uned.lsi.eped.DataStructures.ListIF;
+import es.uned.lsi.eped.DataStructures.*;
 
 /** Representación de un reproductor de música                                */
-public class Player {
-	public TuneCollectionIF tCollection;
-	public PlayListManagerIF maxRecentlyPlayed;
+public class Player implements PlayerIF{
+	private final TuneCollectionIF tCollection;
+	private final int maxRecentlyPlayed;
+	private PlayListManager playListManager;
+	private PlayBackQueue playBackQueue;
+	private RecentlyPlayed recentlyPlayed;
 	
-	public Player(TuneCollectionIF tCollection,PlayListManagerIF maxRecentlyPlayed) {
+	
+	public Player(TuneCollectionIF tCollection, int maxRecentlyPlayed) {
 		this.tCollection = tCollection;
 		this.maxRecentlyPlayed = maxRecentlyPlayed;
+		this.playListManager = new PlayListManager();
+		this.playBackQueue = new PlayBackQueue();
+		this.recentlyPlayed = new RecentlyPlayed(this.maxRecentlyPlayed);
 	}
 	
 	/** Devuelve los identificadores de todas las listas de reproducción        */
 	/** existentes                                                              */
 	/** @returns -una lista con los identificadores de todas las listas de      */
 	/**          reproducción (no importa el orden)                             */
-	public ListIF<String> getPlayListIDs();
+	public ListIF<String> getPlayListIDs(){
+		return this.playListManager.getIDs();
+	}
 
 	/** Devuelve el contenido de una lista de reproducción                      */
 	/** @param   -una cadena de caracteres no vacía con el identificador de la  */
@@ -24,20 +33,29 @@ public class Player {
 	/** @return  -si en el reproductor existe una lista de reproducción con ese */
 	/**          identificador, se devolverá una lista con su contenido         */
 	/**          -en caso contrario, se devolverá una lista vacía               */
-	public ListIF<Integer> getPlayListContent(String playListID);
+	public ListIF<Integer> getPlayListContent(String playListID){
+		if(!this.playListManager.contains(playListID)) {
+			return new List<>();
+		}
+		return this.playListManager.getPlayList(playListID).getPlayList();
+	}
 
 	/** Devuelve los identificadores de las canciones contenidas en la cola de  */
 	/** reproducción                                                            */
 	/** @return  una lista con los identificadores de las canciones que están   */
 	/**          en la cola de reproducción (ha de conservar el orden en el que */
 	/**          se introdujeron las canciones)                                 */
-	public ListIF<Integer> getPlayBackQueue();
+	public ListIF<Integer> getPlayBackQueue(){
+		return this.playBackQueue.getContent();
+	}
 
 	/** Devuelve los identificadores de las últimas canciones reproducidas que  */
 	/** están almacenadas en RecentlyPlayed                                     */
 	/** @return  una lista con los identificadores de las últimas canciones     */
 	/**          reproducidas (en el orden inverso al que se reprodujeron)      */
-	public ListIF<Integer> getRecentlyPlayed();
+	public ListIF<Integer> getRecentlyPlayed(){
+		return this.recentlyPlayed.getContent();
+	}
 
 	/** Crea una nueva lista de reproducción a partir de su identificador       */
 	/** @param   -una cadena de caracteres no vacía con el identificador de la  */
@@ -45,7 +63,9 @@ public class Player {
 	/** @pos     -si no existe una lista de reproducción con ese identificador, */
 	/**          se crea                                                        */
 	/**          -en caso contrario, no se hace nada                            */
-	public void createPlayList(String playListID);
+	public void createPlayList(String playListID) {
+		this.playListManager.createPlayList(playListID);
+	}
 
 	/** Elimina una lista de reproducción del reproductor a partir de su        */
 	/** identificador                                                           */
@@ -54,7 +74,9 @@ public class Player {
 	/** @pos     -si existe una lista de reproducción con ese identificador, se */
 	/**          elimina                                                        */
 	/**          -en caso contrario, no se hace nada                            */
-	public void removePlayList(String playListID);
+	public void removePlayList(String playListID) {
+		this.playListManager.removePlayList(playListID);
+	}
 
 	/** Añade una lista de identificadores de canciones del repositorio a una   */
 	/** lista de reproducción                                                   */
@@ -67,7 +89,11 @@ public class Player {
 	/** @pos     -si existe una lista de reproducción con ese identificador, se */
 	/**          añaden a ella los identificadores contenidos en la lista       */
 	/**          -en caso contrario, no se hace nada                            */
-	public void addListOfTunesToPlayList(String playListID,ListIF<Integer> lT);
+	public void addListOfTunesToPlayList(String playListID,ListIF<Integer> lT) {
+		if(this.playListManager.contains(playListID)) {
+			
+		}
+	}
 
 	/** Añade los identificadores de todas las canciones del repositorio que    */
 	/** cumplan los criterios indicados a una lista de reproducción             */
@@ -91,7 +117,12 @@ public class Player {
 	public void addSearchToPlayList(String playListID,
 	                                  String t, String a, String g, String al,
 	                                  int min_y, int max_y,
-	                                  int min_d, int max_d);
+	                                  int min_d, int max_d) {
+		ListIF listOfTunes = this.getSearchResultList(t, a, g, al, min_y, max_y, min_d, max_d);
+		if(listOfTunes.size()>0) {
+			this.addListOfTunesToPlayList(playListID, listOfTunes);
+		}
+	}
 
 	/** Elimina una canción de una lista de reproducción                        */
 	/** @param   -una cadena de caracteres no vacía con el identificador de la  */
@@ -102,7 +133,11 @@ public class Player {
 	/**          elimina de dicha lista todas las apariciones del identificador */
 	/**          de la canción del repositorio pasada como parámetro            */
 	/**          -en caso contrario, no se hace nada                            */
-	public void removeTuneFromPlayList(String playListID,int tuneID);
+	public void removeTuneFromPlayList(String playListID,int tuneID) {
+		if(this.playListManager.contains(playListID)) {
+			this.playListManager.getPlayList(playListID).removeTune(tuneID);
+		}
+	}
 
 	/** Añade una lista de identificadores de canciones del repositorio a la    */
 	/** cola de reproducción                                                    */
@@ -112,7 +147,9 @@ public class Player {
 	/**          canciones que existen dentro del repositorio                   */
 	/** @pos     se añaden a la cola de reproducción los identificadores de las */
 	/**          canciones contenidos en la lista                               */
-	public void addListOfTunesToPlayBackQueue(ListIF<Integer> lT);
+	public void addListOfTunesToPlayBackQueue(ListIF<Integer> lT) {
+		this.playBackQueue.addTunes(lT);
+	}
 
 	/** Añade los identificadores de todas las canciones del repositorio que    */
 	/** cumplan los criterios indicados a la cola de reproducción               */
@@ -132,7 +169,12 @@ public class Player {
 	/**          criterios indicados                                            */
 	public void addSearchToPlayBackQueue(String t, String a, String g, String al,
 	                                       int min_y, int max_y,
-	                                       int min_d, int max_d);
+	                                       int min_d, int max_d) {
+		ListIF tunesList = this.getSearchResultList(t, a, g, al, min_y, max_y, min_d, max_d);
+		if(tunesList.size() > 0) {
+			this.playBackQueue.addTunes(tunesList);
+		}
+	}
 
 	/** Añade el contenido de una lista de reproducción a la cola de            */
 	/** reproducción                                                            */
@@ -142,11 +184,22 @@ public class Player {
 	/** @pos     -si existe una lista de reproducción con se identificador, se  */
 	/**          añade su contenido a la cola de reproducción                   */
 	/**          -en caso contrario, no se hace nada                            */
-	public void addPlayListToPlayBackQueue(String playListID);
+	public void addPlayListToPlayBackQueue(String playListID) {
+		if(!this.playListManager.contains(playListID)) {
+			return;
+		}
+		
+		ListIF tunesList = this.playListManager.getPlayList(playListID).getPlayList();
+		if(tunesList.size() > 0) {
+			this.playBackQueue.addTunes(tunesList);
+		}
+	}
 
 	/** Vacía la cola de reproducción                                           */
 	/** @pos     -la cola de reproducción se vacía                              */
-	public void clearPlayBackQueue();
+	public void clearPlayBackQueue() {
+		this.playBackQueue.clear();
+	}
 
 	/** Reproduce la siguiente canción en la cola de reproducción               */
 	/** @pos     -si la cola de reproducción no es vacía, se elimina de ella el */
@@ -154,6 +207,28 @@ public class Player {
 	/**          últimas canciones reproducidas, sin sobrepasar su tamaño       */
 	/**          máximo                                                         */
 	/**          -en caso contrario, no se hace nada                            */
-	public void play();
+	public void play() {
+		int lastTuneID = this.playBackQueue.getFirstTune();
+		if(lastTuneID > -1) {
+			this.playBackQueue.extractFirstTune();
+			this.recentlyPlayed.addTune(lastTuneID);
+		}
+	}
+	
+	
+	/**********************************************/
+	/**             CLASE AUXILIAR 			     **/
+	/**********************************************/
+	private ListIF<Integer> getSearchResultList(String t, String a, String g, String al, int min_y, int max_y, int min_d, int max_d){
+		QueryIF query = new Query(t, a, g, al, min_y, max_y, min_d, max_d);
+		ListIF<Integer> listOfTunes = new List<>();
+		for(int i=0; i<this.tCollection.size(); i++) {
+			TuneIF tune = this.tCollection.getTune(i);
+			if(tune.match(query)) {
+				listOfTunes.insert(listOfTunes.size()+1, i);
+			}
+		}
+		return listOfTunes;
+	}
 
 }

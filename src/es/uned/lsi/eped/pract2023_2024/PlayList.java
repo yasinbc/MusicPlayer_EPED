@@ -6,39 +6,38 @@ import es.uned.lsi.eped.DataStructures.*;
 /** Representación de una lista de reproducción                               */
 public class PlayList implements PlayListIF{
 	
-	//public TuneCollection tuneCollection;
-	public ListIF<Integer> playList;
+	private ListIF<Integer> listaReproduccion;
 	
 	public PlayList() {
-		this.playList = new List<Integer>();
+		listaReproduccion = new List<Integer>();
 	}
-	
-	/*
-	private ListIF<Integer> songIds;
-	
-	public PlayList() {
-		this.songIds = new List<Integer>();
-	}
-	*/
 
 	/** Devuelve la lista de identificadores de canciones de la lista de        */
 	/** reproducción                                                            */
 	/** @return  -una lista de enteros con los identificadores de las canciones */
 	/**          contenidas en la lista de reproducción                         */
 	public ListIF<Integer> getPlayList(){
+		
+		ListIF<Integer> listaAuxiliar = new List<>();
+		listaAuxiliar.clear();
+		IteratorIF<Integer> iterator = listaReproduccion.iterator();
+		while(iterator.hasNext()) {
+			Integer numero = iterator.getNext();
+			listaAuxiliar.insert(listaAuxiliar.size()+1, numero);
+		}
+		return listaAuxiliar;
+		
+		/***************************************/
+		/*
 		ListIF<Integer> playListID = new List<>();
 		int i=0;
 		while(this.playList.iterator().hasNext()) {
 			playListID.insert(i, this.playList.get(i));
 		}
 		return playListID;
+		*/
+		/***************************************/
 	}
-	
-	/*
-	public ListIF<Integer> getPlayList(){
-		return this.songIds;
-	}
-	*/
 
 	/** Añade una lista de identificadores de canciones a la lista de           */
 	/** reproducción                                                            */
@@ -49,12 +48,21 @@ public class PlayList implements PlayListIF{
 	/** @pos     -el contenido de la lista recibida como parámetro se concatena */
 	/**          al contenido existente en la lista de reproducción             */
 	public void addListOfTunes(ListIF<Integer> lT) {
-		if(!lT.isEmpty()) {
+		IteratorIF<Integer> iterator = lT.iterator();
+		while(iterator.hasNext()) {
+			Integer numero = iterator.getNext();
+			listaReproduccion.insert(listaReproduccion.size()+1, numero);
+		}
+		
+		/***************************************/
+		/*if(!lT.isEmpty()) {
 			int i=0;
 			while(lT.iterator().hasNext()) {
 				this.playList.insert(this.playList.size()+1+i, lT.get(i));
 			}
 		}
+		*/
+		/***************************************/
 	}
 
 	/** Elimina todas las apariciones de un identificador de canción de la      */
@@ -66,12 +74,29 @@ public class PlayList implements PlayListIF{
 	/**          parámetro. El resto de identificadores conserva su orden       */
 	/**          relativo                                                       */
 	public void removeTune(int tuneID){
+		
+		IteratorIF<Integer> iterator = listaReproduccion.iterator();
+		int posicion;
+		posicion = 1;
+		while(iterator.hasNext()) {
+			Integer numero = iterator.getNext();
+			if(numero == tuneID) {
+				listaReproduccion.remove(posicion);
+			}else {
+				posicion++;
+			}
+		}
+		
+		/***************************************/
+		/*
 		int pos = 0;
 		while(this.playList.iterator().hasNext()) {
 			if(this.playList.contains(tuneID)) {
 				this.playList.remove(tuneID);
 			}
 		}
+		*/
+		/***************************************/
 	}
 	/** METODO DE PRUEBA, BORRAR AL FINAL */
 	public static void main(String [] args ) {

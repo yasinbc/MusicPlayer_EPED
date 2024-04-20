@@ -56,13 +56,6 @@ public class TuneCollection implements TuneCollectionIF{
 	/** @return  -un objeto TuneIF con la canción con el identificador recibido */
 	//pre-cond: 0<=ID<this.size().
 	public Tune getTune(int ID){
-		/*
-		if(0<=ID && ID<this.size()) {
-			return collection[ID];
-		}else {
-			return collection[0];
-		}
-		*/
 		return collection[ID];
 	}
 }
