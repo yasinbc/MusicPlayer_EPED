@@ -1,6 +1,5 @@
 package es.uned.lsi.eped.pract2023_2024;
 
-import es.uned.lsi.eped.DataStructures.ListIF;
 import es.uned.lsi.eped.DataStructures.*;
 
 /** Representación de una lista de reproducción                               */

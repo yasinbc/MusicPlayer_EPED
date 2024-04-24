@@ -61,14 +61,12 @@ public class PlayListManager implements PlayListManagerIF{
 		//PlayList listaReproduccion = new PlayList();
 		
 		while(iterator.hasNext()) {
-			if(this.playlist.contains(playListID)) {
-				return this.playlist.getIDs();
+			String id = iterator.getNext();
+			if(id.equals(playListID)) {
+				return listaReproduccion;
 			}
-			iterator.getNext();
-			PlayList pl = new PlayList();
-			pl.getPlayList();
 		}
-		return this.listaReproduccion;
+		return null;
 	}	
 	/*************************************************************/
 	/*
@@ -94,11 +92,13 @@ public class PlayListManager implements PlayListManagerIF{
 	public ListIF<String> getIDs(){
 		IteratorIF<String> iterator = this.playlist.iterator();
 		ListIF<String> playListIDs = new List<>();
+		iterator = playListIDs.iterator();
 		int i=0;
 		String cadena;
 		while(iterator.hasNext()) {
 			cadena = String.valueOf(i);
 			playListIDs.insert(i+1, cadena);
+			iterator.getNext();
 		}
 		
 		
@@ -157,13 +157,5 @@ public class PlayListManager implements PlayListManagerIF{
 		}
 		*/
 		/*********************************************************/
-	}
-	
-	/** MÉTODO MAIN DE PRUEBA, BORRAR LUEGO */
-	public static void main(String [] args) {
-		PlayListManager plm = new PlayListManager();
-		
-		
-		plm.getIDs();
 	}
 }

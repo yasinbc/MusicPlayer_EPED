@@ -10,7 +10,6 @@ import es.uned.lsi.eped.DataStructures.IteratorIF;
 import es.uned.lsi.eped.DataStructures.List;
 import es.uned.lsi.eped.DataStructures.ListIF;
 
-/** Representación del repositorio de canciones                               */
 public class TuneCollection implements TuneCollectionIF{
 
 	private Tune[] collection;
@@ -44,18 +43,13 @@ public class TuneCollection implements TuneCollectionIF{
 		}
 	}
 	
-	/** Devuelve el tamaño de la colección de canciones                         */
-	/** @return  -devuelve un entero con el número de canciones almacenadas     */
-	public int size(){
-		return collection.length;
-	}
-	
-	/** Devuelve una canción a partir de su identificador                       */
-	/** @param   -un entero con el identificador de la canción a recuperar      */
-	/** @pre     0<=ID<this.size()                                              */
-	/** @return  -un objeto TuneIF con la canción con el identificador recibido */
 	//pre-cond: 0<=ID<this.size().
 	public Tune getTune(int ID){
 		return collection[ID];
 	}
+	
+	public int size(){
+		return collection.length;
+	}
+	
 }

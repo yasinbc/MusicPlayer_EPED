@@ -49,7 +49,7 @@ mkdir "$TMP_FOLDER/src/es/uned/lsi"
 mkdir "$TMP_FOLDER/src/es/uned/lsi/eped"
 mkdir "$TMP_FOLDER/src/es/uned/lsi/eped/pract2023_2024"
 cp -r "$SRC_DIR/es/uned/lsi/eped/pract2023_2024/"* "$TMP_FOLDER/src/es/uned/lsi/eped/pract2023_2024"
-#cp -v "juego_de_pruebas_2024/lib/src/"* "$TMP_FOLDER/src/es/uned/lsi/eped/pract2023_2024"
+cp -v "juego_de_pruebas_2024/lib/src/"* "$TMP_FOLDER/src/es/uned/lsi/eped/pract2023_2024"
 echo
 echo
 read -rsp $'Press any key to continue...\n' -n 1 key

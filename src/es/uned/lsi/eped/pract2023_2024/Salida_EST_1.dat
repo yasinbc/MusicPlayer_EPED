@@ -1,0 +1,33 @@
+11373
+createPlayList("Prueba");
+getPlayListContent("Prueba");
+
+addListOfTunesToPlayList("Prueba",[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]);
+getPlayListContent("Prueba");
+
+addListOfTunesToPlayList("Prueba",[1,3,2,4,5]);
+getPlayListContent("Prueba");
+
+removeTuneFromPlayList("Prueba",2);
+getPlayListContent("Prueba");
+
+createPlayList("1974");
+removePlayList("Prueba");
+addSearchToPlayList("1974","","","","",1974,1974,-1,-1);
+getPlayListContent("1974");
+
+createPlayList("Beethoven");
+createPlayList("Beethoven menos de 4 minutos");
+addSearchToPlayList("Beethoven","","Beethoven","","",-1,-1,-1,-1);
+getPlayListContent("Beethoven");
+
+addSearchToPlayList("Beethoven menos de 4 minutos","","Beethoven","","",-1,-1,-1,239);
+getPlayListContent("Beethoven menos de 4 minutos");
+
+createPlayList("Amiga Games");
+addSearchToPlayList("Amiga Games","","","","Paula Agnus Denise",-1,-1,-1,-1);
+getPlayListContent("Amiga Games");
+
+getPlayBackQueue();
+
+addSearchToPlayBackQueue("","","","",1974,1974,-1,-1);

@@ -204,7 +204,7 @@ public class Operation {
 			System.out.println();
 			return;
 		}
-		if(opName.equalsIgnoreCase("getPlayListsIDs")){
+		if(opName.equalsIgnoreCase("getPlayListIDs")){
 			// Imprime la llamada al método
 			System.out.println(opName+"();");
 			// Llama al método

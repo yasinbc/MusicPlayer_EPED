@@ -1,0 +1,62 @@
+createPlayList	"Prueba"
+getPlayListIDs
+getPlayListContent	"Prueba"
+addListOfTunesToPlayList	"Prueba"	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2
+getPlayListContent	"Prueba"
+addListOfTunesToPlayList	"Prueba"	1	3	2	4	5
+getPlayListContent	"Prueba"
+removeTuneFromPlayList	"Prueba"	2
+getPlayListContent	"Prueba"
+createPlayList	"1974"
+getPlayListIDs
+removePlayList	"Prueba"
+getPlayListIDs
+addSearchToPlayList	"1974"	""	""	""	""	1974	1974	-1	-1
+getPlayListContent	"1974"
+createPlayList	"Beethoven"
+createPlayList	"Beethoven menos de 4 minutos"
+getPlayListIDs
+addSearchToPlayList	"Beethoven"	""	"Beethoven"	""	""	-1	-1	-1	-1
+getPlayListContent	"Beethoven"
+addSearchToPlayList	"Beethoven menos de 4 minutos"	""	"Beethoven"	""	""	-1	-1	-1	239
+getPlayListContent	"Beethoven menos de 4 minutos"
+createPlayList	"Amiga Games"
+addSearchToPlayList	"Amiga Games"	""	""	""	"Paula Agnus Denise"	-1	-1	-1	-1
+getPlayListContent	"Amiga Games"
+getPlayBackQueue
+addSearchToPlayBackQueue	""	""	""	""	1974	1974	-1	-1
+getPlayBackQueue
+play
+play
+play
+play
+play
+play
+play
+play
+play
+play
+play
+getPlayBackQueue
+getRecentlyPlayed
+play
+getRecentlyPlayed
+addPlayListToPlayBackQueue	"Beethoven"
+getPlayBackQueue
+clearPlayBackQueue
+getPlayBackQueue
+play
+getPlayBackQueue
+getRecentlyPlayed
+addListOfTunesToPlayBackQueue	1	1	2	3	5	8	13	21	34	55	89	144	233	377	610	987	1597	2584	4181	6765	10946
+getPlayBackQueue
+clearPlayBackQueue
+addSearchToPlayBackQueue	""	""	""	""	1960	1969	-1	-1
+getPlayBackQueue
+clearPlayBackQueue
+removePlayList	"Beethoven"
+removePlayList	"Beethoven menos de 4 minutos"
+createPlayList	"El rock de los 80"
+addSearchToPlayList	"El rock de los 80"	""	""	"Rock"	""	1980	1989	-1	-1
+getPlayListContent	"El rock de los 80"
+getPlayListIDs
