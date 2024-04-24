@@ -92,12 +92,13 @@ public class PlayListManager implements PlayListManagerIF{
 	public ListIF<String> getIDs(){
 		IteratorIF<String> iterator = this.playlist.iterator();
 		ListIF<String> playListIDs = new List<>();
-		iterator = playListIDs.iterator();
+		//iterator = playListIDs.iterator();
 		int i=0;
-		String cadena;
+		//String cadena;
 		while(iterator.hasNext()) {
-			cadena = String.valueOf(i);
-			playListIDs.insert(i+1, cadena);
+			//cadena = String.valueOf(i);
+			//this.playlist.insert(i+1, this.playlist.get(i));
+			playListIDs.insert(i+1, playlist.get(i));
 			iterator.getNext();
 		}
 		
