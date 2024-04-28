@@ -91,7 +91,23 @@ public class Player implements PlayerIF{
 	/**          -en caso contrario, no se hace nada                            */
 	public void addListOfTunesToPlayList(String playListID,ListIF<Integer> lT) {
 		if(this.playListManager.contains(playListID)) {
+			this.playListManager.listaReproduccion.addListOfTunes(lT);
 			
+			/*
+			ListIF<Integer> playList = this.playListManager.getPlayList(playListID).getPlayList();
+			IteratorIF<Integer> iterator = playList.iterator();
+			while(iterator.hasNext()) {
+				
+				playListManager.listaReproduccion.addListOfTunes(lT);
+				
+				int tuneID= lT.get(maxRecentlyPlayed);
+				if(!playList.contains(tuneID)) {
+					playList.insert(playList.size()+1, tuneID);
+					this.playListManager.listaReproduccion.addListOfTunes(lT);
+				}
+				iterator.getNext();
+			}
+			*/
 		}
 	}
 
