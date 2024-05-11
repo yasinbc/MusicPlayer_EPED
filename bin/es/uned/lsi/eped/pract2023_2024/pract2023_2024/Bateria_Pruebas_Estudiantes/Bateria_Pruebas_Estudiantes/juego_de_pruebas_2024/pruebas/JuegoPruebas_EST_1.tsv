@@ -1,5 +1,5 @@
 createPlayList	"Prueba"
-getPlayListIDs
+getPlayListsIDs
 getPlayListContent	"Prueba"
 addListOfTunesToPlayList	"Prueba"	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2
 getPlayListContent	"Prueba"
@@ -8,14 +8,14 @@ getPlayListContent	"Prueba"
 removeTuneFromPlayList	"Prueba"	2
 getPlayListContent	"Prueba"
 createPlayList	"1974"
-getPlayListIDs
+getPlayListsIDs
 removePlayList	"Prueba"
-getPlayListIDs
+getPlayListsIDs
 addSearchToPlayList	"1974"	""	""	""	""	1974	1974	-1	-1
 getPlayListContent	"1974"
 createPlayList	"Beethoven"
 createPlayList	"Beethoven menos de 4 minutos"
-getPlayListIDs
+getPlayListsIDs
 addSearchToPlayList	"Beethoven"	""	"Beethoven"	""	""	-1	-1	-1	-1
 getPlayListContent	"Beethoven"
 addSearchToPlayList	"Beethoven menos de 4 minutos"	""	"Beethoven"	""	""	-1	-1	-1	239
@@ -59,4 +59,4 @@ removePlayList	"Beethoven menos de 4 minutos"
 createPlayList	"El rock de los 80"
 addSearchToPlayList	"El rock de los 80"	""	""	"Rock"	""	1980	1989	-1	-1
 getPlayListContent	"El rock de los 80"
-getPlayListIDs
+getPlayListsIDs

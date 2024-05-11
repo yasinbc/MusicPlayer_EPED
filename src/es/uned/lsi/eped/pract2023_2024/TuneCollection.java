@@ -42,8 +42,7 @@ public class TuneCollection implements TuneCollectionIF{
 			cont--;
 		}
 	}
-	
-	//pre-cond: 0<=ID<this.size().
+
 	public Tune getTune(int ID){
 		return collection[ID];
 	}

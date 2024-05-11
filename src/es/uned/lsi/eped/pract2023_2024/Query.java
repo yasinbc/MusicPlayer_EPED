@@ -1,103 +1,65 @@
 package es.uned.lsi.eped.pract2023_2024;
 
-/** Representación de los criterios de búsqueda                               */
-public class Query implements QueryIF{
-	public String title = "";
-	public String author = "";
-	public String gender = "";
-	public String album ="";
-	public int minYear = 0;
-	public int maxYear = 0;
-	public int minDuration = 0;
-	public int maxDuration = 0;
-	
-	public Query (String titulo, String autor, String genero, String album, int minYear, int maxYear, int minDuration, int maxDuration) {
-		this.title = titulo;
-		this.author = autor;
-		this.gender = genero;
+public class Query implements QueryIF {
+
+	private String title;
+	private String author;
+	private String genre;
+	private String album;
+	private int min_year;
+	private int max_year;
+	private int min_duration;
+	private int max_duration;
+
+	public Query(String title, String author, String genre, String album, int min_year,
+			int max_year, int min_duration, int max_duration) {
+		this.title = title;
+		this.author = author;
+		this.genre = genre;
 		this.album = album;
-		this.minYear = minYear;
-		this.maxYear = maxYear;
-		this.minDuration = minDuration;
-		this.maxDuration = maxDuration;
+		this.min_year = min_year;
+		this.max_year = max_year;
+		this.min_duration = min_duration;
+		this.max_duration = max_duration;
 	}
-	
-	/** Devuelve el criterio título                                             */
-	/** @return  -una cadena de caracteres con el título de la canción buscada  */
+
+	//Devuelve titulo
 	public String getTitle() {
-		return this.title;
+		return title;
 	}
 
-	/** Devuelve el criterio autor                                              */
-	/** @return  -una cadena de caracteres con el autor de la canción buscada   */
+	//Devuelve autor
 	public String getAuthor() {
-		return this.author;
+		return author;
 	}
 
-	/** Devuelve el criterio género                                             */
-	/** @return  -una cadena de caracteres con el género de la canción buscada  */
+	//Devuelve criterio genero
 	public String getGenre() {
-		return this.gender;
+		return genre;
 	}
 
-	/** Devuelve el criterio álbum                                              */
-	/** @return  --una cadena de caracteres con el álbum al que pertenece la    */
-	/**          canción buscada                                                */
+	//Devuelve album
 	public String getAlbum() {
-		return this.album;
+		return album;
 	}
 
-	/** Devuelve el criterio año mínimo                                         */
-	/** @return  -un entero con el primer año del intervalo en el que se grabó  */
-	/**          la canción a buscar                                            */
+	//Devuelve año minimo
 	public int getMin_year() {
-		return this.minYear;
+		return min_year;
 	}
 
-	/** Devuelve el criterio año máximo                                         */
-	/** @return  -un entero con el último año del intervalo en el que se grabó  */
-	/**          la canción a buscar                                            */
+	//Devuelve año maximo
 	public int getMax_year() {
-		return this.maxYear;
+		return max_year;
 	}
 
-	/** Devuelve el criterio duración mínima                                    */
-	/** @return  -un entero con la duración mínima de la canción a buscar       */
+	//Devuelve duracion minima
 	public int getMin_duration() {
-		return this.minDuration;
+		return min_duration;
 	}
 
-	/** Devuelve el criterio duración máxima                                    */
-	/** @return  -un entero con la duración máxima de la canción a buscar       */
+	//Devuelve duracion maxima
 	public int getMax_duration() {
-		return this.maxDuration;
+		return max_duration;
 	}
-	
-	
-	
-	
-	/** PRUEBAS, BORRAR AL TERMINAR */
-	public static void main(String args[]) {
-		Query query = new Query("titulo","autor","genero","album", 1990, 2024, 0, 3);
-		Query qry = new Query("Unforgiven III","Metallica","Trashmetal","Death magnethic", 2008, 2024, 1, 4);
-		System.out.println("title: "+query.title+",\n"+
-						   "author: "+query.author+",\n"+
-						   "gender: "+query.gender+",\n"+
-						   "album: "+query.album+",\n"+
-						   "minYear: "+query.minYear+",\n"+
-						   "maxYear: "+query.maxYear+",\n"+
-						   "minDuration: "+query.minDuration+",\n"+
-						   "maxDuration: "+query.maxDuration+"\n\n");
-
-		System.out.println("title: "+qry.getTitle()+",\n"+
-				   "author: "+qry.getAuthor()+",\n"+
-				   "gender: "+qry.getGenre()+",\n"+
-				   "album: "+qry.getAlbum()+",\n"+
-				   "minYear: "+qry.getMin_year()+",\n"+
-				   "maxYear: "+qry.getMax_year()+",\n"+
-				   "minDuration: "+qry.getMin_duration()+",\n"+
-				   "maxDuration: "+qry.getMax_duration()+"\n");
-		
-	}
-
 }

@@ -1,162 +1,87 @@
 package es.uned.lsi.eped.pract2023_2024;
 
+import es.uned.lsi.eped.DataStructures.IteratorIF;
+import es.uned.lsi.eped.DataStructures.List;
 import es.uned.lsi.eped.DataStructures.ListIF;
-import es.uned.lsi.eped.DataStructures.*;
 
-/** Representación del gestor de listas de reproducción                       */
-public class PlayListManager implements PlayListManagerIF{
-		
-	//public TuneCollection repository;
-	//private ListIF<String, PlayListIF> playList2;
-	private ListIF<String> playlist;
-	public PlayList listaReproduccion;
-	//public String playListID;
+public class PlayListManager implements PlayListManagerIF {
 	
-	public PlayListManager() {
-		this.playlist = new List<>();
-		this.listaReproduccion = new PlayList();
+	ListIF<PlayListID> PlayListIDs;
+	
+	PlayListManager(){
+		PlayListIDs = new List<>();
 	}
-	
 
-	/** Comprueba si existe una lista de reproducción dado su identificador     */
-	/** @param   -una cadena de caracteres no vacía con el identificador de la  */
-	/**          lista de reproducción que queremos saber si existe o no        */
-	/** @return  -un valor booleano indicando si existe o no una lista de       */
-	/**          reproducción asociada al identificador recibido como parámetro */
-	public boolean contains(String playListID) {
-		IteratorIF<String> iterador = this.playlist.iterator();
-		while(iterador.hasNext()) {
-			if(this.playlist.contains(playListID)) {
+	//Comprueba si existe una lista de reproducción dado su ID
+	public boolean contains(String PlayListID) {
+		IteratorIF<PlayListID> iterador = PlayListIDs.iterator();
+		while( iterador.hasNext()) {
+			if ( PlayListID == iterador.getNext().getId()) {
 				return true;
 			}
-			iterador.getNext();
 		}
 		return false;
-		
-		/*********************************************/
-		/*
-		if(!this.playlist.isEmpty()) {
-			while(this.playlist.iterator().hasNext()) {
-				if(this.playlist.equals(playListID)) {
-					return true;
-					//return this.playlist.equals(playListID);
-				}
+	}
+
+	//Devuelve la lista de reproducción asociada a un ID
+	public PlayListIF getPlayList(String PlayListID) {
+		PlayList listaReproduccion = null;
+		IteratorIF<PlayListID> iterador = PlayListIDs.iterator();
+		while( iterador.hasNext()) {
+			PlayListID listaReproductorID = iterador.getNext();
+			if ( PlayListID.equals(listaReproductorID.getId())) {
+				listaReproduccion = listaReproductorID.getPlayList();
 			}
 		}
-		return false;
-		*/
-		/*********************************************/
+		return listaReproduccion;
 	}
-	
 
-	/** Devuelve la lista de reproducción asociada a un identificador           */
-	/** @param   -una cadena de caracteres no vacía con el identificador de la  */
-	/**          lista de reproducción que queremos recuperar                   */
-	/** @pre     -existe una lista de reproducción asociada al identificador    */
-	/**          que se recibe como parámetro                                   */
-	/** @return  -la lista de reproducción asociada al identificador recibido   */
-	/**          como parámetro                                                 */
-	public PlayListIF getPlayList(String playListID) {
-		IteratorIF<String> iterator = this.playlist.iterator();
-		//PlayList listaReproduccion = new PlayList();
-		
-		while(iterator.hasNext()) {
-			String id = iterator.getNext();
-			if(id.equals(playListID)) {
-				return listaReproduccion;
+	//Devuelve lista con todos los IDs de las listas de reproducción existentes
+	public ListIF<String> getIDs() {
+		ListIF<String> IDs = new List<>();
+		IteratorIF<PlayListID> iterador = PlayListIDs.iterator();
+		while( iterador.hasNext()) {
+			IDs.insert(IDs.size()+1, iterador.getNext().getId());
+		}
+		return !IDs.isEmpty()? IDs : null;
+	}
+
+	//Crea una nueva lista de reproducción vacía y la asocia a un nuevo ID
+	public void createPlayList(String PlayListID) {
+		this.PlayListIDs.insert(this.PlayListIDs.size()+1, new PlayListID(PlayListID));
+	}
+
+	//Elimina una lista de reproducción asociada a un ID
+	public void removePlayList(String PlayListID) {
+		int index = 1;
+		IteratorIF<PlayListID> iterador = this.PlayListIDs.iterator();
+		while(iterador.hasNext()) {
+			PlayListID listaReproduccion = iterador.getNext();
+			if (listaReproduccion.getId().equals(PlayListID)) {
+				this.PlayListIDs.remove(index);
+			}else {
+				index ++;
 			}
 		}
-		return null;
-	}	
-	/*************************************************************/
-	/*
-		if(!this.playlist.isEmpty()) {
-			this.playlist.
-		}
-		
-		for(int i=1; i<=playlist.size(); i++) {
-            if (playlist.get(i).getPlayList().equals(playListID)) {
-				return playlist.get(i);
-			}
-		}
-		return null;
-	}
-	*/
-	/*************************************************************/
 
-	/** Devuelve una lista con todos los identificadores de las listas de       */
-	/** reproducción existentes                                                 */
-	/** @return  -una lista de cadenas de caracteres (todas no vacías) que son  */
-	/**          los identificadores de todas las listas de reproducción        */
-	/**          existentes                                                     */
-	public ListIF<String> getIDs(){
-		IteratorIF<String> iterator = this.playlist.iterator();
-		ListIF<String> playListIDs = new List<>();
-		//iterator = playListIDs.iterator();
-		int i=0;
-		//String cadena;
-		while(iterator.hasNext()) {
-			//cadena = String.valueOf(i);
-			//this.playlist.insert(i+1, this.playlist.get(i));
-			playListIDs.insert(i+1, playlist.get(i));
-			iterator.getNext();
-		}
-		
-		
-		return playListIDs;
-		
-		/******************************************/
-		/*
-		ListIF<String> ids = new List<>();
-		for(int i=1; i<=playlist.size(); i++) {
-			ids.insert(i, Integer.toString(i)+", ");
-		}
-		return ids;
-		*/
-		/******************************************/
 	}
 
-	/** Crea una nueva lista de reproducción vacía y la asocia a un nuevo       */
-	/** identificador                                                           */
-	/** @param   -una cadena de caracteres no vacía con el identificador de la  */
-	/**          lista de reproducción que queremos crear                       */
-	/** @pre     -no existe ninguna lista de reproducción asociada al           */
-	/**          identificador recibido como parámetro                          */
-	public void createPlayList(String playListID) {
-		//ListIF<String> playList = new List<>();
-		if(!this.playlist.contains(playListID)) {
-			playlist.insert(playlist.size()+1, playListID);
-		}
-		
-		/****************************************************/
-		/*
-		if(String.)
-		if(!contains(playListID)) {
-			playlist.insert(playlist.size()+1, new PlayListIF(playListID));
-		}
-		*/
-		/****************************************************/
-	}
+	class PlayListID {
+		String identificador;
+		PlayList playList;
 
-	/** Elimina una lista de reproducción asociada a un identificador           */
-	/** @param   -una cadena de caracteres no vacía con el identificador de la  */
-	/**          lista de reproducción que queremos eliminar                    */
-	/** @pre     -existe una lista de reproducción asociada al identificador    */
-	/**          recibido como parámetro                                        */
-	public void removePlayList(String playListID) {
-		if(this.playlist.contains(playListID)) {
-			playlist.clear();
+		public PlayListID(String identificador) {
+			this.identificador = identificador;
+			this.playList = new PlayList();
 		}
-		
-		/*********************************************************/
-		/*
-		for (int i = 1; i <= playlist.size(); i++) {
-			if (playlist.get(i).getPlayList().equals(playListID)) {
-				playlist.remove(i);
-	            break;
-	        }
+
+		public String getId() {
+			return identificador;
 		}
-		*/
-		/*********************************************************/
+
+		public PlayList getPlayList() {
+			return playList;
+		}
+
 	}
 }
